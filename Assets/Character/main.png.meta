@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: f18f0636c57073b47a1e15b861881840
-timeCreated: 1454173742
+timeCreated: 1455714966
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -73,7 +73,7 @@ TextureImporter:
         serializedVersion: 2
         x: 46
         y: 1574
-        width: 416
+        width: 415
         height: 454
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -83,7 +83,7 @@ TextureImporter:
         serializedVersion: 2
         x: 516
         y: 1575
-        width: 414
+        width: 420
         height: 451
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -93,7 +93,7 @@ TextureImporter:
         serializedVersion: 2
         x: 991
         y: 1570
-        width: 420
+        width: 413
         height: 454
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -123,7 +123,7 @@ TextureImporter:
         serializedVersion: 2
         x: 2403
         y: 1552
-        width: 395
+        width: 396
         height: 455
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -131,9 +131,9 @@ TextureImporter:
     - name: main_6
       rect:
         serializedVersion: 2
-        x: 73
+        x: 72
         y: 982
-        width: 396
+        width: 397
         height: 455
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -141,9 +141,9 @@ TextureImporter:
     - name: main_7
       rect:
         serializedVersion: 2
-        x: 544
+        x: 542
         y: 1000
-        width: 403
+        width: 404
         height: 474
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -151,7 +151,7 @@ TextureImporter:
     - name: main_8
       rect:
         serializedVersion: 2
-        x: 1017
+        x: 1016
         y: 1000
         width: 376
         height: 454
@@ -161,19 +161,19 @@ TextureImporter:
     - name: main_9
       rect:
         serializedVersion: 2
-        x: 1462
-        y: 1002
-        width: 419
-        height: 453
+        x: 1467
+        y: 1001
+        width: 414
+        height: 454
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: main_10
       rect:
         serializedVersion: 2
-        x: 1942
+        x: 1935
         y: 1006
-        width: 414
+        width: 420
         height: 451
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -183,7 +183,7 @@ TextureImporter:
         serializedVersion: 2
         x: 2410
         y: 1005
-        width: 416
+        width: 415
         height: 453
       alignment: 0
       pivot: {x: 0, y: 0}
