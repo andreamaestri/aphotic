@@ -13,8 +13,8 @@ public class csInsanitySystem : MonoBehaviour
 
     public GUISkin gameSkin;
 
-    private int sanityDifficulty = 2;
-    private int sanityRestore = 2;
+    public int sanityDifficulty = 2;
+    public int sanityRestore = 2;
     private int sanity = 100;
     private int count = 0;
     public int countMax;
