@@ -134,6 +134,6 @@ public class csInsanitySystem : MonoBehaviour
 
     void start ()
     {
-        print("Working");
+        Debug.Log(sanity);
     }
 }
