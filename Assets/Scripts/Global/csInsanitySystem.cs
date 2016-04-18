@@ -5,142 +5,135 @@ using System.Collections;
 public class csInsanitySystem : MonoBehaviour
 {
     // Variable Initialization
-    public bool hasTorch = false;
-    public bool colLight;
-    public bool colDark;
-    public bool maxSanity = false;
-    public bool countFin = false;
+    public bool colisionLight;
+    public bool colisionDarkness;
+
+    private bool countFinish = false;
+
+
 
     public GUISkin gameSkin;
 
+
+    public int countMax;
     public int sanityDifficulty = 2;
     public int sanityRestore = 2;
+
     private int sanity = 100;
     private int count = 0;
-    public int countMax;
 
-    void OnGUI ( )
+
+    void OnGUI()
     {
-        // Initialize the GUI
+        // GUI Initialization
         GUI.skin = gameSkin;
 
         // Show Sanity In-Game
         string sanityText = "Sanity: " + sanity;
-        GUI.Box (new Rect (Screen.width - 150, 40, 130, 23), sanityText);
-
-        // Show Count In-Game
-        string countText = "Count: " + count;
-        GUI.Box (new Rect (Screen.width - 150, 80, 130, 23), countText);
-
-        // Show Count Finish In-Game
-        string countFinText = "Fin: " + countFin;
-        GUI.Box (new Rect (Screen.width - 150, 120, 130, 23), countFinText);
-
-        // Show Dark Collision In-Game
-        string colDarkText = "Dark: " + colDark;
-        GUI.Box (new Rect (Screen.width - 150, 160, 130, 23), colDarkText);
-
-        // Show Light Collision In-Game
-        string colLightText = "Light: " + colLight;
-        GUI.Box (new Rect (Screen.width - 150, 200, 130, 23), colLightText);
+        GUI.Box(new Rect(Screen.width - 150, 40, 130, 23), sanityText);
     }
 
-    // Update is called once per frame
-    void Update ( )
+
+    void OnTriggerEnter2D (Collider2D other)
     {
-        if (colLight == true)
-        {
-            sanityGain();
-        }
+        // Debug.Log ("Collision Detected");
 
-        else if (colDark == true)
+        if (other.gameObject.CompareTag ("Light"))
         {
-            sanityLoss();
-        }
-
-        if (count < countMax)
-        {
-            count++;
-            print("Current: " + count);
-            print("Max: " + countMax);
+            colisionDarkness = true;
+            colisionLight = false;
         }
 
         else
         {
-            countFin = true;
-            count = 0;
+            colisionDarkness = false;
+            colisionLight = true;
         }
     }
 
-    // Detect 2D Collision Enter
-    void OnTriggerEnter2D ( Collider2D other )
+    void OnTriggerExit2D (Collider2D other)
     {
-        // Debug.Log ("Collision Detected!");
-
-        if (other.gameObject.CompareTag ("Player"))
+        if (other.gameObject.CompareTag ("Light"))
         {
-			colDark = false;
-            colLight = true;
-        }
-
-        else
-        {
-            colDark = true;
-            colLight = false;
+            colisionLight = false;
+            colisionDarkness = true;
         }
     }
 
-    // Detect 2D Collision Exit
-    void OnTriggerExit2D( Collider2D other )
-    {
-        if (other.gameObject.CompareTag ("Player"))
-        {
-            colDark = true;
-            colLight = false;
-        }
-    }
 
-    void sanityGain ( )
+    void sanityGain ()
     {
-        if (countFin && sanity <= 98)
+        if (countFinish && sanity <= 98)
         {
             count = 0;
-            countFin = false;
+            countFinish = false;
             sanity += 2;
         }
 
-        else if (countFin && sanity == 99)
+        else if (countFinish && sanity == 99)
+        {
+            sanity = 100;
+        }
+
+        else if (sanity == 100)
         {
             sanity = 100;
         }
     }
 
-    void sanityLoss ( )
+
+    void sanityLoss ()
     {
         if (sanity <= 0)
         {
             sanity = 0;
-            maxSanity = false;
-            levelRestart ();
+                  levelRestart ();
         }
 
-        else if (hasTorch && countFin)
+        else if (countFinish)
         {
             count = 0;
-            countFin = false;
-            sanity -= 2;
-        }
-
-        else if (countFin)
-        {
-            count = 0;
-            countFin = false;
+            countFinish = false;
             sanity -= 5;
         }
     }
 
-    void levelRestart()
+
+    void update ()
+    {
+        Debug.Log("Working");
+        if (colisionLight)
+        {
+            sanityLoss ();
+        }
+
+        if (colisionDarkness)
+        {
+            sanityGain ();
+        }
+
+        if (count < countMax)
+        {
+            count++;
+            Debug.Log ("Current Count: " + count);
+            Debug.Log ("Max Count: " + countMax);
+        }
+
+        else
+        {
+            countFinish = true;
+            count = 0;
+        }
+    }
+
+
+    void levelRestart ()
     {
         SceneManager.LoadScene (SceneManager.GetActiveScene ().buildIndex);
+    }
+
+    void start ()
+    {
+        print("Working");
     }
 }
